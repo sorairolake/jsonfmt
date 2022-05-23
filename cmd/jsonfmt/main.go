@@ -6,8 +6,12 @@
 
 package main
 
-import "fmt"
+import (
+	"os"
+
+	"github.com/sorairolake/jsonfmt/internal/core"
+)
 
 func main() {
-	fmt.Println("Hello, world!")
+	os.Exit(core.Run())
 }
