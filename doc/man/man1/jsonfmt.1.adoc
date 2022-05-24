@@ -1,0 +1,86 @@
+//
+// SPDX-License-Identifier: Apache-2.0 OR MIT
+//
+// Copyright (C) 2022 Shun Sakai
+//
+
+= jsonfmt(1)
+// Specify in UTC.
+:docdate: 2022-05-24
+:doctype: manpage
+ifdef::revnumber[:mansource: jsonfmt {revnumber}]
+:manmanual: General Commands Manual
+:includedir: ../include
+
+== NAME
+
+jsonfmt - a formatter for JSON
+
+== SYNOPSIS
+
+*{manname}* [_OPTION_]... [_FILE_]...
+
+== DESCRIPTION
+
+*{manname}* is a formatter for JSON.
+By default, the formatted JSON will be output to stdout.
+
+== POSITIONAL ARGUMENTS
+
+_FILE_::
+  Files to format.
+  If _FILE_ is omitted, the JSON is read from stdin.
+
+== OPTIONS
+
+*-compact*::
+  Print JSON on a single-line.
+
+*-tab*::
+  Indent with tabs instead of spaces.
+
+*-indent* _NUM_::
+  Number of spaces per indentation level.
++
+The default value is 2.
+
+*-write*::
+  Edit files in-place.
+
+*-h*, *-help*::
+  Print help information.
+
+*-version*::
+  Print version information.
+
+== EXIT STATUS
+
+*0*::
+  Successful program execution.
+
+*1*::
+  An error occurred.
+
+== EXAMPLES
+
+Format the given JSON:{blank}::
+  $ *{manname} input.json*
+
+== REPORTING BUGS
+
+Bugs can be reported on GitHub at:{blank}::
+  https://github.com/sorairolake/jsonfmt/issues
+
+== COPYRIGHT
+
+Copyright (C) 2021 Shun Sakai
+
+This program is distributed under the terms of either the Apache License 2.0 or
+the MIT License.
+
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+== SEE ALSO
+
+*jq*(1)

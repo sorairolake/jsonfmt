@@ -14,6 +14,11 @@ default: build
     mkdir -p ./build
     go build -o ./build/jsonfmt ./cmd/jsonfmt
 
+# Remove generated artifacts
+@clean:
+    go clean
+    rm -rf ./build
+
 # Run tests
 @test:
     go test ./...
@@ -39,6 +44,10 @@ lint: vet staticcheck
 # Run `staticcheck`
 @staticcheck:
     staticcheck ./...
+
+# Build a man page
+@build-man-page:
+    go run ./build.go
 
 # Run the linter for GitHub Actions workflow files
 @lint-github-actions:
