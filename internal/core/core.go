@@ -27,7 +27,13 @@ const (
 // Run returns the exit status of the program.
 func Run() int {
 	flag.Parse()
-	args := cli.Args
+
+	var (
+		args       = cli.Args
+		inputFiles = flag.Args()
+	)
+
+	_ = inputFiles
 
 	if args.Version {
 		fmt.Fprintln(flag.CommandLine.Output(), info.CommandName, info.CommandVersion)

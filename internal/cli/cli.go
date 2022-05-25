@@ -23,7 +23,7 @@ type Opt struct {
 	Tab bool
 
 	// Indent is an argument for number of spaces per indentation level.
-	Indent int
+	Indent uint
 
 	// Write is an argument for editing files in-place.
 	Write bool
@@ -38,7 +38,7 @@ var Args Opt
 func init() {
 	flag.BoolVar(&Args.Compact, "compact", false, "Print JSON on a single-line")
 	flag.BoolVar(&Args.Tab, "tab", false, "Indent with tabs instead of spaces")
-	flag.IntVar(&Args.Indent, "indent", 2, "Number of spaces per indentation level")
+	flag.UintVar(&Args.Indent, "indent", 2, "Number of spaces per indentation level")
 	flag.BoolVar(&Args.Write, "write", false, "Edit files in-place")
 	flag.BoolVar(&Args.Version, "version", false, "Print version information")
 
