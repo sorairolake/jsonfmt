@@ -43,7 +43,19 @@ func init() {
 	flag.BoolVar(&Args.Version, "version", false, "Print version information")
 
 	flag.Usage = func() {
-		fmt.Fprintln(flag.CommandLine.Output(), "Usage:", info.CommandName, "[OPTIONS] [FILE]...")
+		fmt.Fprintln(flag.CommandLine.Output(), info.CommandName, info.CommandVersion)
+		fmt.Fprintf(flag.CommandLine.Output(), "A formatter for JSON\n\n")
+
+		fmt.Fprintln(flag.CommandLine.Output(), "Usage:")
+		fmt.Fprintf(flag.CommandLine.Output(), "  %v [OPTIONS] [FILE]...\n\n", info.CommandName)
+
+		fmt.Fprintln(flag.CommandLine.Output(), "Args:")
+		fmt.Fprintln(flag.CommandLine.Output(), "  <FILE>...")
+		fmt.Fprintf(flag.CommandLine.Output(), "    \tFiles to format\n\n")
+
+		fmt.Fprintln(flag.CommandLine.Output(), "Options:")
 		flag.PrintDefaults()
+		fmt.Fprintln(flag.CommandLine.Output(), "  -h, -help")
+		fmt.Fprintln(flag.CommandLine.Output(), "    \tPrint help information")
 	}
 }
