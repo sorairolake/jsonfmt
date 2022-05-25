@@ -4,6 +4,7 @@
 // Copyright (C) 2022 Shun Sakai
 //
 
+// Package cli provides the command-line interface.
 package cli
 
 import (
@@ -13,14 +14,25 @@ import (
 	"github.com/sorairolake/jsonfmt/internal/info"
 )
 
+// Opt represents structure of the command-line interface.
 type Opt struct {
+	// Compact is an argument for printing JSON on a single-line.
 	Compact bool
-	Tab     bool
-	Indent  int
-	Write   bool
+
+	// Tab is an argument for indenting with tabs instead of spaces.
+	Tab bool
+
+	// Indent is an argument for number of spaces per indentation level.
+	Indent int
+
+	// Write is an argument for editing files in-place.
+	Write bool
+
+	// Version is an argument for printing version information.
 	Version bool
 }
 
+// Args is the structure of the command-line interface.
 var Args Opt
 
 func init() {

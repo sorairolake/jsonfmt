@@ -4,6 +4,7 @@
 // Copyright (C) 2022 Shun Sakai
 //
 
+// Package core provides the core of the program.
 package core
 
 import (
@@ -14,11 +15,16 @@ import (
 	"github.com/sorairolake/jsonfmt/internal/info"
 )
 
+// Exit status.
 const (
-	exitSuccess = iota
-	exitFailure
+	// ExitSuccess is an exit status when program execution is successful.
+	ExitSuccess = iota
+
+	// ExitFailure is an exit status when an error occurred.
+	ExitFailure
 )
 
+// Run returns the exit status of the program.
 func Run() int {
 	flag.Parse()
 	args := cli.Args
@@ -26,8 +32,8 @@ func Run() int {
 	if args.Version {
 		fmt.Fprintln(flag.CommandLine.Output(), info.CommandName, info.CommandVersion)
 
-		return exitSuccess
+		return ExitSuccess
 	}
 
-	return exitSuccess
+	return ExitSuccess
 }
