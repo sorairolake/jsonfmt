@@ -24,7 +24,7 @@ func Run() int {
 	args := cli.Args
 
 	if args.Version {
-		fmt.Fprintln(flag.CommandLine.Output(), info.CommandName, info.GetVersion())
+		fmt.Fprintln(flag.CommandLine.Output(), info.CommandName, info.CommandVersion)
 
 		return exitSuccess
 	}

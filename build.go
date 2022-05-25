@@ -24,11 +24,7 @@ func generateManPage(outDir string) error {
 		return err
 	}
 
-	args := []string{"-b", "manpage"}
-	if version := info.GetVersion(); version != "" {
-		args = append(args, "-a", strings.Join([]string{"revnumber", version}, "="))
-	}
-	args = append(args, "-D", outDir, filepath.Join(manDir, "jsonfmt.1.adoc"))
+	args := []string{"-b", "manpage", "-a", strings.Join([]string{"revnumber", info.CommandVersion}, "="), "-D", outDir, filepath.Join(manDir, "jsonfmt.1.adoc")}
 
 	return exec.Command("asciidoctor", args...).Run()
 }

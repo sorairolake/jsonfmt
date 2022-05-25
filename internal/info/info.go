@@ -6,20 +6,7 @@
 
 package info
 
-import "runtime/debug"
-
-const CommandName = "jsonfmt"
-
-var version string
-
-func GetVersion() string {
-	if version != "" {
-		return version
-	}
-
-	if info, ok := debug.ReadBuildInfo(); ok {
-		return info.Main.Version
-	} else {
-		return "unknown"
-	}
-}
+const (
+	CommandName    = "jsonfmt"
+	CommandVersion = "0.1.0"
+)
