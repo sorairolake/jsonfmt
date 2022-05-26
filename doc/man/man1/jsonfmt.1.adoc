@@ -33,7 +33,7 @@ _FILE_::
 
 == OPTIONS
 
-*-compact*::
+*-c*, *-compact*::
   Print JSON on a single-line.
 
 *-tab*::
@@ -47,13 +47,13 @@ Possible values for this option are in the range 0 to 4,294,967,295 or
 +
 The default value is 2.
 
-*-write*::
+*-w*, *-write*::
   Edit files in-place.
 
 *-h*, *-help*::
   Print help information.
 
-*-version*::
+*-V*, *-version*::
   Print version information.
 
 == EXIT STATUS
