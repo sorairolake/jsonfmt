@@ -38,7 +38,7 @@ func main() {
 	}
 
 	if _, err := os.Stat(outDir); os.IsNotExist(err) {
-		if err := os.Mkdir(filepath.Base(outDir), 0755); err != nil {
+		if err := os.Mkdir(filepath.Base(outDir), 0o755); err != nil {
 			log.Fatal(err)
 		}
 	}

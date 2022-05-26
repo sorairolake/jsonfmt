@@ -23,6 +23,10 @@ default: build
 @test:
     go test ./...
 
+# Run `golangci-lint run`
+@golangci-lint:
+    golangci-lint run -E gofmt
+
 # Run the formatter (`go fmt` and `goimports`)
 fmt: gofmt goimports
 

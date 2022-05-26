@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+  pull_request:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        target:
+          - x86_64-unknown-linux-gnu
+          - x86_64-unknown-linux-musl
+        include:
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-20.04
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Setup Go environment
+      uses: actions/setup-go@v3
+      with:
+        go-version: '>=1.18'
+    - name: Build a package
+      run: go build ./cmd/jsonfmt
+    - name: Run tests
+      run: go test ./...
+
+  golangci:
+    name: golangci-lint
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Setup Go environment
+      uses: actions/setup-go@v3
+      with:
+        go-version: '>=1.18'
+    - name: Run golangci-lint
+      uses: golangci/golangci-lint-action@v3.2.0
+      with:
+        version: 'latest'
+        args: -E gofmt

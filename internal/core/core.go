@@ -86,7 +86,7 @@ func batchIndent(inputFiles map[string][]byte, isUseTab bool, indentLevel int) (
 
 func writeFiles(inputFiles map[string][]byte) error {
 	for path, data := range inputFiles {
-		if err := os.WriteFile(path, data, 0644); err != nil {
+		if err := os.WriteFile(path, data, 0o644); err != nil {
 			return err
 		}
 	}

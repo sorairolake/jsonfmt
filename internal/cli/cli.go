@@ -44,7 +44,7 @@ type argPair struct {
 }
 
 func printOptions() {
-	argPairs := []argPair{argPair{"c", "compact"}, argPair{longhand: "tab"}, argPair{longhand: "indent"}, argPair{"w", "write"}, argPair{"V", "version"}}
+	argPairs := []argPair{{"c", "compact"}, {longhand: "tab"}, {longhand: "indent"}, {"w", "write"}, {"V", "version"}}
 
 	fmt.Fprintln(flag.CommandLine.Output(), "Options:")
 	for _, argPair := range argPairs {
