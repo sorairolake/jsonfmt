@@ -33,27 +33,26 @@ _FILE_::
 
 == OPTIONS
 
-*-c*, *-compact*::
+*-c*, *--compact*::
   Print JSON on a single-line.
 
-*-tab*::
+*--tab*::
   Indent with tabs instead of spaces.
 
-*-indent* _NUM_::
+*--indent* _NUM_::
   Number of spaces per indentation level.
 +
-Possible values for this option are in the range 0 to 4,294,967,295 or
-18,446,744,073,709,551,615 (the implementation-specific unsigned integer type).
+Possible values for this option are in the range 0 to 255.
 +
 The default value is 2.
 
-*-w*, *-write*::
+*-w*, *--write*::
   Edit files in-place.
 
-*-h*, *-help*::
+*-h*, *--help*::
   Print help information.
 
-*-V*, *-version*::
+*-V*, *--version*::
   Print version information.
 
 == EXIT STATUS

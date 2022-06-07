@@ -10,12 +10,13 @@ package core
 import (
 	"bytes"
 	"encoding/json"
-	"flag"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"strings"
+
+	flag "github.com/spf13/pflag"
 
 	"github.com/sorairolake/jsonfmt/internal/cli"
 	"github.com/sorairolake/jsonfmt/internal/info"
@@ -104,7 +105,7 @@ func Run() int {
 	)
 
 	if args.Version {
-		fmt.Fprintln(flag.CommandLine.Output(), info.CommandName, info.CommandVersion)
+		fmt.Fprintln(os.Stderr, info.CommandName, info.CommandVersion)
 
 		return ExitSuccess
 	}
