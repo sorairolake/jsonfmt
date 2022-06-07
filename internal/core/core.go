@@ -10,12 +10,14 @@ package core
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
 	"os"
 	"strings"
 
+	"github.com/sean-/sysexits"
 	flag "github.com/spf13/pflag"
 
 	"github.com/sorairolake/jsonfmt/internal/cli"
@@ -114,7 +116,14 @@ func Run() int {
 	if err != nil {
 		log.Print(err)
 
-		return ExitFailure
+		switch {
+		case errors.Is(err, os.ErrNotExist):
+			return sysexits.NoInput
+		case errors.Is(err, os.ErrPermission):
+			return sysexits.NoPerm
+		default:
+			return ExitFailure
+		}
 	}
 
 	var outputFiles map[string][]byte
@@ -125,7 +134,7 @@ func Run() int {
 		} else {
 			log.Print(err)
 
-			return ExitFailure
+			return sysexits.DataErr
 		}
 	} else {
 		indentLevel := int(args.Indent)
@@ -134,7 +143,7 @@ func Run() int {
 		} else {
 			log.Print(err)
 
-			return ExitFailure
+			return sysexits.DataErr
 		}
 	}
 
@@ -142,7 +151,14 @@ func Run() int {
 		if err := writeFiles(outputFiles); err != nil {
 			log.Print(err)
 
-			return ExitFailure
+			switch {
+			case errors.Is(err, os.ErrInvalid):
+				return sysexits.CantCreate
+			case errors.Is(err, os.ErrPermission):
+				return sysexits.NoPerm
+			default:
+				return ExitFailure
+			}
 		}
 	} else {
 		for _, data := range outputFiles {

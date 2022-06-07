@@ -63,6 +63,15 @@ The default value is 2.
 *1*::
   An error occurred.
 
+*66*::
+  A file was not found.
+
+*73*::
+  An output file cannot be created.
+
+*77*::
+  The operation lacked the necessary privileges to complete.
+
 == EXAMPLES
 
 Format the given JSON:{blank}::
