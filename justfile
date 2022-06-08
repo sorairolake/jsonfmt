@@ -51,7 +51,7 @@ lint: vet staticcheck
 
 # Build a man page
 @build-man-page:
-    go run ./build.go
+    go run ./tools/build.go
 
 # Run the linter for GitHub Actions workflow files
 @lint-github-actions:
