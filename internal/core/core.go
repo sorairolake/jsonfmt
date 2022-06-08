@@ -85,7 +85,7 @@ func Run() int {
 		}
 	} else {
 		for _, data := range outputFiles {
-			fmt.Println(string(data))
+			fmt.Print(string(data))
 		}
 	}
 
