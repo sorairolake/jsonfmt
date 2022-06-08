@@ -10,9 +10,9 @@ package core
 import (
 	"errors"
 	"fmt"
-	"log"
 	"os"
 
+	"github.com/rs/zerolog/log"
 	"github.com/sean-/sysexits"
 	flag "github.com/spf13/pflag"
 
@@ -37,7 +37,7 @@ func Run() int {
 
 	inputFiles, err := readFiles(inputPaths)
 	if err != nil {
-		log.Print(err)
+		log.Err(err.(*os.PathError).Err).Msgf("Failed to read the file: %v:", err.(*os.PathError).Path)
 
 		switch {
 		case errors.Is(err, os.ErrNotExist):
@@ -55,7 +55,7 @@ func Run() int {
 		if output, err := batchCompact(inputFiles); err == nil {
 			outputFiles = output
 		} else {
-			log.Print(err)
+			log.Err(err).Msg("Failed to format JSON:")
 
 			return sysexits.DataErr
 		}
@@ -64,7 +64,7 @@ func Run() int {
 		if output, err := batchIndent(inputFiles, args.Tab, indentLevel); err == nil {
 			outputFiles = output
 		} else {
-			log.Print(err)
+			log.Err(err).Msg("Failed to format JSON:")
 
 			return sysexits.DataErr
 		}
@@ -72,7 +72,7 @@ func Run() int {
 
 	if args.Write {
 		if err := writeFiles(outputFiles); err != nil {
-			log.Print(err)
+			log.Err(err.(*os.PathError).Err).Msgf("Failed to write to the file: %v:", err.(*os.PathError).Path)
 
 			switch {
 			case errors.Is(err, os.ErrInvalid):
