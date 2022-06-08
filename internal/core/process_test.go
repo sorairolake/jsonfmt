@@ -15,7 +15,9 @@ import (
 )
 
 func TestReadFilesFromStdin(t *testing.T) {
-	tempFile, err := os.CreateTemp("", "test")
+	t.Parallel()
+
+	tempFile, err := os.CreateTemp("", "test-read-files-from-stdin-")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -42,7 +44,9 @@ func TestReadFilesFromStdin(t *testing.T) {
 }
 
 func TestReadFilesFromFile(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "test")
+	t.Parallel()
+
+	tempDir, err := os.MkdirTemp("", "test-read-files-from-file-")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -62,14 +66,16 @@ func TestReadFilesFromFile(t *testing.T) {
 }
 
 func TestBatchCompact(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "test")
+	t.Parallel()
+
+	tempDir, err := os.MkdirTemp("", "test-batch-compact-")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer os.RemoveAll(tempDir)
 
 	filePath := filepath.Join(tempDir, "file")
-	inputJSON := `{
+	const inputJSON = `{
   "foo": "Hello, world!",
   "bar": 255,
   "baz": null
@@ -81,19 +87,21 @@ func TestBatchCompact(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	expectedJSON := `{"foo":"Hello, world!","bar":255,"baz":null}`
+	const expectedJSON = `{"foo":"Hello, world!","bar":255,"baz":null}`
 	assert.Equal(t, expectedJSON, string(output[filePath]))
 }
 
 func TestBatchIndentWithSpaces(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "test")
+	t.Parallel()
+
+	tempDir, err := os.MkdirTemp("", "test-batch-indent-with-spaces-")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer os.RemoveAll(tempDir)
 
 	filePath := filepath.Join(tempDir, "file")
-	inputJSON := `{"foo":"Hello, world!","bar":255,"baz":null}`
+	const inputJSON = `{"foo":"Hello, world!","bar":255,"baz":null}`
 	input := map[string][]byte{filePath: []byte(inputJSON)}
 
 	output, err := batchIndent(input, false, 2)
@@ -101,7 +109,7 @@ func TestBatchIndentWithSpaces(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	expectedJSON := `{
+	const expectedJSON = `{
   "foo": "Hello, world!",
   "bar": 255,
   "baz": null
@@ -110,14 +118,16 @@ func TestBatchIndentWithSpaces(t *testing.T) {
 }
 
 func TestBatchIndentWithTabs(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "test")
+	t.Parallel()
+
+	tempDir, err := os.MkdirTemp("", "test-batch-indent-with-tabs-")
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer os.RemoveAll(tempDir)
 
 	filePath := filepath.Join(tempDir, "file")
-	inputJSON := `{"foo":"Hello, world!","bar":255,"baz":null}`
+	const inputJSON = `{"foo":"Hello, world!","bar":255,"baz":null}`
 	input := map[string][]byte{filePath: []byte(inputJSON)}
 
 	output, err := batchIndent(input, true, 1)
@@ -125,7 +135,7 @@ func TestBatchIndentWithTabs(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	expectedJSON := `{
+	const expectedJSON = `{
 	"foo": "Hello, world!",
 	"bar": 255,
 	"baz": null
@@ -134,7 +144,9 @@ func TestBatchIndentWithTabs(t *testing.T) {
 }
 
 func TestWriteFiles(t *testing.T) {
-	tempDir, err := os.MkdirTemp("", "test")
+	t.Parallel()
+
+	tempDir, err := os.MkdirTemp("", "test-write-files-")
 	if err != nil {
 		t.Fatal(err)
 	}
