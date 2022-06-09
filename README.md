@@ -13,6 +13,11 @@
 go install github.com/sorairolake/jsonfmt/cmd/jsonfmt@latest
 ```
 
+### From binaries
+
+The [release page][release-page-url] contains pre-built binaries for Linux,
+macOS and Windows.
+
 ### How to build
 
 Please see [BUILD.adoc](BUILD.adoc).
@@ -43,3 +48,4 @@ See [COPYING](COPYING), [LICENSE-APACHE](LICENSE-APACHE) and
 [ci-url]: https://github.com/sorairolake/jsonfmt/actions?query=workflow%3ACI
 [package-badge]: https://pkg.go.dev/badge/github.com/sorairolake/jsonfmt.svg
 [package-url]: https://pkg.go.dev/github.com/sorairolake/jsonfmt
+[release-page-url]: https://github.com/sorairolake/jsonfmt/releases
