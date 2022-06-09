@@ -6,7 +6,7 @@
 
 = jsonfmt(1)
 // Specify in UTC.
-:docdate: 2022-05-24
+:docdate: 2022-06-09
 :doctype: manpage
 ifdef::revnumber[:mansource: jsonfmt {revnumber}]
 :manmanual: General Commands Manual
