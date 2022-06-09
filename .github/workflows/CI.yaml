@@ -14,14 +14,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        target:
-          - x86_64-unknown-linux-gnu
-          - x86_64-unknown-linux-musl
-        include:
-          - target: x86_64-unknown-linux-gnu
-            os: ubuntu-20.04
-          - target: x86_64-unknown-linux-musl
-            os: ubuntu-20.04
+        os: [ubuntu-20.04, macos-11, windows-2022]
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -48,4 +41,4 @@ jobs:
       uses: golangci/golangci-lint-action@v3.2.0
       with:
         version: 'latest'
-        args: -E gofmt
+        args: -E gofmt,goimports

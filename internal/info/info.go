@@ -13,5 +13,5 @@ const (
 	CommandName = "jsonfmt"
 
 	// CommandVersion is the version of the command.
-	CommandVersion = "0.1.0"
+	CommandVersion = "0.2.0"
 )

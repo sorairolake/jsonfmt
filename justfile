@@ -25,7 +25,7 @@ default: build
 
 # Run `golangci-lint run`
 @golangci-lint:
-    golangci-lint run -E gofmt
+    golangci-lint run -E gofmt,goimports
 
 # Run the formatter (`go fmt` and `goimports`)
 fmt: gofmt goimports
@@ -51,7 +51,7 @@ lint: vet staticcheck
 
 # Build a man page
 @build-man-page:
-    go run ./build.go
+    go run ./tools/build.go
 
 # Run the linter for GitHub Actions workflow files
 @lint-github-actions:

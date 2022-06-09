@@ -6,7 +6,7 @@
 
 = jsonfmt(1)
 // Specify in UTC.
-:docdate: 2022-05-24
+:docdate: 2022-06-09
 :doctype: manpage
 ifdef::revnumber[:mansource: jsonfmt {revnumber}]
 :manmanual: General Commands Manual
@@ -33,27 +33,26 @@ _FILE_::
 
 == OPTIONS
 
-*-c*, *-compact*::
+*-c*, *--compact*::
   Print JSON on a single-line.
 
-*-tab*::
+*--tab*::
   Indent with tabs instead of spaces.
 
-*-indent* _NUM_::
+*--indent* _NUM_::
   Number of spaces per indentation level.
 +
-Possible values for this option are in the range 0 to 4,294,967,295 or
-18,446,744,073,709,551,615 (the implementation-specific unsigned integer type).
+Possible values for this option are in the range 0 to 255.
 +
 The default value is 2.
 
-*-w*, *-write*::
+*-w*, *--write*::
   Edit files in-place.
 
-*-h*, *-help*::
+*-h*, *--help*::
   Print help information.
 
-*-V*, *-version*::
+*-V*, *--version*::
   Print version information.
 
 == EXIT STATUS
@@ -63,6 +62,15 @@ The default value is 2.
 
 *1*::
   An error occurred.
+
+*66*::
+  A file was not found.
+
+*73*::
+  An output file cannot be created.
+
+*77*::
+  The operation lacked the necessary privileges to complete.
 
 == EXAMPLES
 
