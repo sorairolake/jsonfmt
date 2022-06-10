@@ -12,6 +12,12 @@ project adheres to https://semver.org/[Semantic Versioning].
 
 toc::[]
 
+== {compare-url}/v0.2.0\...HEAD[Unreleased]
+
+=== Fixed
+
+* Add newline at the end of compact output
+
 == {compare-url}/v0.1.0\...v0.2.0[0.2.0] - 2022-06-09
 
 === Added

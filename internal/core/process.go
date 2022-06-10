@@ -42,6 +42,7 @@ func batchCompact(inputFiles map[string][]byte) (map[string][]byte, error) {
 		if err := json.Compact(&buf, data); err != nil {
 			return nil, err
 		}
+		buf.WriteByte('\n')
 		inputFiles[path] = buf.Bytes()
 	}
 
