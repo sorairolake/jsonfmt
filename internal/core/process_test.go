@@ -87,7 +87,7 @@ func TestBatchCompact(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	const expectedJSON = `{"foo":"Hello, world!","bar":255,"baz":null}`
+	const expectedJSON = `{"foo":"Hello, world!","bar":255,"baz":null}` + "\n"
 	assert.Equal(t, expectedJSON, string(output[filePath]))
 }
 
