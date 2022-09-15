@@ -16,7 +16,6 @@ import (
 
 func readFiles(inputPaths []string) (map[string][]byte, error) {
 	inputFiles := make(map[string][]byte)
-
 	if len(inputPaths) == 0 {
 		if data, err := io.ReadAll(os.Stdin); err == nil {
 			inputFiles[""] = data
@@ -32,7 +31,6 @@ func readFiles(inputPaths []string) (map[string][]byte, error) {
 			}
 		}
 	}
-
 	return inputFiles, nil
 }
 
@@ -45,7 +43,6 @@ func batchCompact(inputFiles map[string][]byte) (map[string][]byte, error) {
 		buf.WriteByte('\n')
 		inputFiles[path] = buf.Bytes()
 	}
-
 	return inputFiles, nil
 }
 
@@ -57,7 +54,6 @@ func batchIndent(inputFiles map[string][]byte, isUseTab bool, indentLevel int) (
 		indent = " "
 	}
 	indent = strings.Repeat(indent, indentLevel)
-
 	for path, data := range inputFiles {
 		var buf bytes.Buffer
 		if err := json.Indent(&buf, data, "", indent); err != nil {
@@ -65,7 +61,6 @@ func batchIndent(inputFiles map[string][]byte, isUseTab bool, indentLevel int) (
 		}
 		inputFiles[path] = buf.Bytes()
 	}
-
 	return inputFiles, nil
 }
 
@@ -75,6 +70,5 @@ func writeFiles(inputFiles map[string][]byte) error {
 			return err
 		}
 	}
-
 	return nil
 }

@@ -23,9 +23,7 @@ func generateManPage(outDir string) error {
 	} else {
 		return err
 	}
-
 	args := []string{"-b", "manpage", "-a", strings.Join([]string{"revnumber", info.CommandVersion}, "="), "-D", outDir, filepath.Join(manDir, "jsonfmt.1.adoc")}
-
 	return exec.Command("asciidoctor", args...).Run()
 }
 
@@ -36,13 +34,11 @@ func main() {
 	} else {
 		log.Fatal(err)
 	}
-
 	if _, err := os.Stat(outDir); os.IsNotExist(err) {
 		if err := os.Mkdir(filepath.Base(outDir), 0o755); err != nil {
 			log.Fatal(err)
 		}
 	}
-
 	if err := generateManPage(outDir); err != nil {
 		log.Fatalf("Asciidoctor failed (%v)", err)
 	}

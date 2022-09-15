@@ -23,7 +23,6 @@ import (
 // Run returns the exit status of the program.
 func Run() int {
 	flag.Parse()
-
 	var (
 		args       = cli.Args
 		inputPaths = flag.Args()
@@ -31,14 +30,12 @@ func Run() int {
 
 	if args.Version {
 		fmt.Fprintln(os.Stderr, info.CommandName, info.CommandVersion)
-
 		return ExitSuccess
 	}
 
 	inputFiles, err := readFiles(inputPaths)
 	if err != nil {
 		log.Err(err.(*os.PathError).Err).Msgf("Failed to read the file: %v:", err.(*os.PathError).Path)
-
 		switch {
 		case errors.Is(err, os.ErrNotExist):
 			return sysexits.NoInput
@@ -50,13 +47,11 @@ func Run() int {
 	}
 
 	var outputFiles map[string][]byte
-
 	if args.Compact {
 		if output, err := batchCompact(inputFiles); err == nil {
 			outputFiles = output
 		} else {
 			log.Err(err).Msg("Failed to format JSON:")
-
 			return sysexits.DataErr
 		}
 	} else {
@@ -65,7 +60,6 @@ func Run() int {
 			outputFiles = output
 		} else {
 			log.Err(err).Msg("Failed to format JSON:")
-
 			return sysexits.DataErr
 		}
 	}
@@ -73,7 +67,6 @@ func Run() int {
 	if args.Write {
 		if err := writeFiles(outputFiles); err != nil {
 			log.Err(err.(*os.PathError).Err).Msgf("Failed to write to the file: %v:", err.(*os.PathError).Path)
-
 			switch {
 			case errors.Is(err, os.ErrInvalid):
 				return sysexits.CantCreate
@@ -88,6 +81,5 @@ func Run() int {
 			fmt.Print(string(data))
 		}
 	}
-
 	return ExitSuccess
 }
