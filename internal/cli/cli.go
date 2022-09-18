@@ -43,10 +43,8 @@ func init() {
 	flag.Uint8Var(&Args.Indent, "indent", 2, "Number of spaces per indentation level")
 	flag.BoolVarP(&Args.Write, "write", "w", false, "Edit files in-place")
 	flag.BoolVarP(&Args.Version, "version", "V", false, "Print version information")
-
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "Usage: %v [OPTIONS] [FILE]...\n", info.CommandName)
-
 		flag.PrintDefaults()
 	}
 }
